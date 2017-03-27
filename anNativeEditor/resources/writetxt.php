@@ -5,5 +5,5 @@ fwrite($openFile, $newData);
 fclose($openFile);
 
 $tagToDisplay = file_get_contents("antag.txt");
-echo $tagToDisplay;
+echo trim($tagToDisplay);
 ?>
