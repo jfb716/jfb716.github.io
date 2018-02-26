@@ -8,9 +8,27 @@
         <meta property="fb:pages" content="311928532310740" />
         <script>
 
+        /* Issue code for: https://github.com/prebid/Prebid.js/issues/2196
+
           var adUnits = [{
               code: 'div-gpt-ad-1',
               sizes: [[728, 90]],
+              bids: [{
+                  bidder: 'audienceNetwork',
+                  params: {
+                     placementId: '154187914959322_519264628451647',
+                     format: 'native'
+                  }
+              }]
+          }];
+
+          */
+
+          // Working code
+
+          var adUnits = [{
+              code: 'div-gpt-ad-1',
+              sizes: [[300, 250]],
               bids: [{
                   bidder: 'audienceNetwork',
                   params: {
