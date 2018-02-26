@@ -6,14 +6,90 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Test Site</title>
         <meta property="fb:pages" content="311928532310740" />
+        <script>
+          var PREBID_TIMEOUT = 2000;
+
+          var adUnits = [{
+              code: 'div-gpt-ad-1',
+              sizes: [[728, 90]],
+              bids: [{
+                  bidder: 'audienceNetwork',
+                  params: {
+                     placementId: '154187914959322_519264628451647',
+                     format: 'native'
+                  }
+              }]
+          }];
+
+          var pbjs = pbjs || {};
+          pbjs.que = pbjs.que || [];
+
+        </script>
+
+        <script type="text/javascript" src="prebid.js" async></script>
+        <script>
+
+
+          pbjs.bidderSettings = {
+                    standard: {
+                        adserverTargeting: [
+                            {
+                                key: "hb_bidder",
+                                val: function (bidResponse) {
+                                    console.log('Bid Response Bidder Name: ' + bidResponse.bidderCode);
+                                    return bidResponse.bidderCode;
+                                }
+                            }, {
+                                key: "hb_adid",
+                                val: function (bidResponse) {
+                                    console.log('Bid Response Ad ID: ' + bidResponse.adId);
+                                    return bidResponse.adId;
+                                }
+                            }, {
+                                key: "hb_pb",
+                                val: function (bidResponse) {
+                                    console.log('Bid Response Bid Price: ' + bidResponse.pbMg);
+                                    return '20.00';
+                                }
+                            }]}};
+
+          pbjs.que.push(function() {
+              pbjs.addAdUnits(adUnits);
+              pbjs.requestBids({
+                  adUnitCodes: ['div-gpt-ad-1'],
+                  bidsBackHandler: renderAdNow
+              });
+          });
+
+
+          setTimeout(function() {
+              renderAdNow();
+          }, PREBID_TIMEOUT);
+
+        </script>
 
 
     </head>
     <body>
-          <h4>728x90 mWeb Native Test with Prebid.js v1.1.1</h4>
+          <h4>728x90 mWeb Native Test with Prebid.js v1.5.0</h4>
 
-          <div style="height: 90px;width: 728px;border: 1px solid black;box-sizing: border-box;">
-
+          <div class="box1" style="height: 90px;width: 728px;border: 1px solid black;box-sizing: border-box;">
+            <script>
+              function renderAdNow() {
+                var w = window;
+                for (i = 0; i < 10; i++) {
+                w = w.parent;
+                if (w.pbjs) {
+                  try {
+                    w.pbjs.renderAd(document, '%%PATTERN:hb_adid%%');
+                    break;
+                  } catch (e) {
+                    continue;
+                  }
+                }
+                }
+              }
+            </script>
           </div>
     </body>
 </html>
