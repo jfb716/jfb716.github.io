@@ -68,7 +68,7 @@
                                   return '20.00';
                               }
                           }]}};
-                          
+
           pbjs.que.push(function() {
               pbjs.addAdUnits(adUnits);
               pbjs.requestBids({
@@ -85,7 +85,7 @@
     <body>
           <h4>728x90 mWeb Native Test with Prebid.js v1.5.0</h4>
 
-          <div class="box1" style="height: 90px;width: 728px;border: 1px solid black;box-sizing: border-box;">
+          <div id="div-gpt-ad-1" class="box1" style="height: 90px;width: 728px;border: 1px solid black;box-sizing: border-box;">
             <script>
             (function() {
                 var w = window;
@@ -94,6 +94,7 @@
                 if (w.pbjs) {
                   try {
                     w.pbjs.renderAd(document, '%%PATTERN:hb_adid%%');
+                    console.log("render ad");
                     break;
                   } catch (e) {
                     continue;
