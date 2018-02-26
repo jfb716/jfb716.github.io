@@ -73,7 +73,10 @@
               pbjs.addAdUnits(adUnits);
               pbjs.requestBids({
                   adUnitCodes: ['div-gpt-ad-1'],
-
+                  bidsBackHandler: function(){
+                    pbjs.setTargetingForGPTAsync();
+                    renderAdNow();
+                  }
               });
 
           });
@@ -87,7 +90,6 @@
 
           <div id="div-gpt-ad-1" class="box1" style="height: 90px;width: 728px;border: 1px solid black;box-sizing: border-box;">
             <script>
-            setTimeout(renderAdNow, 2000);
             function renderAdNow(){
               console.log("function running");
                 var w = window;
