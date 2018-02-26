@@ -94,7 +94,6 @@
               console.log("function running");
                 var w = window;
                 for (i = 0; i < 10; i++) {
-                w = w.parent;
                 if (w.pbjs) {
                   try {
                     w.pbjs.renderAd(document, '%%PATTERN:hb_adid%%');
