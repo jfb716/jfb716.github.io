@@ -8,6 +8,8 @@
         <meta property="fb:pages" content="311928532310740" />
         <script>
 
+        var PREBID_TIMEOUT = 2000;
+
         /* Issue code for: https://github.com/prebid/Prebid.js/issues/2196
 
           var adUnits = [{
@@ -46,6 +48,9 @@
 
         <script type="text/javascript" src="prebid.js" async></script>
         <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+
         pbjs.bidderSettings = {
                   standard: {
                       adserverTargeting: [
@@ -69,45 +74,46 @@
                               }
                           }]}};
 
-          pbjs.que.push(function() {
-              pbjs.addAdUnits(adUnits);
-              pbjs.requestBids({
-                  adUnitCodes: ['div-gpt-ad-1'],
-                  bidsBackHandler: function(){
-                    pbjs.setTargetingForGPTAsync();
-                    renderAdNow();
-                  }
-              });
+                          pbjs.que.push(function() {
+                              pbjs.addAdUnits(adUnits);
+                              pbjs.requestBids({
+                                  adUnitCodes: ['div-gpt-ad-1'],
+                                  bidsBackHandler: sendAdserverRequest
+                              });
+                          });
 
-          });
+                          function sendAdserverRequest() {
+                              if (pbjs.adserverRequestSent) return;
+                              pbjs.adserverRequestSent = true;
+                              googletag.cmd.push(function() {
+                                  pbjs.que.push(function() {
+                                      pbjs.setTargetingForGPTAsync();
+                                      googletag.pubads().refresh([slot1]);
+                                  });});};
+
+                          setTimeout(function() {
+                              sendAdserverRequest();
+                          }, PREBID_TIMEOUT);
 
         </script>
+        <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+        <script>
 
+          var slot1; + googletag.cmd.push(function() {
+            slot1 = googletag.defineSlot('/27721068/header_bidding', [300, 250], 'div-gpt-ad-1').addService(googletag.pubads());
+            googletag.pubads().disableInitialLoad();
+            googletag.enableServices();
+          });
+        </script>
 
     </head>
     <body>
           <h4>728x90 mWeb Native Test with Prebid.js v1.5.0</h4>
-
-          <div id="div-gpt-ad-1" class="box1" style="height: 90px;width: 728px;border: 1px solid black;box-sizing: border-box;">
+          <div id='div-gpt-ad-1' style='height:90px; width:728px;border: 1px solid black;box-sizing: border-box;'>
             <script>
-            function renderAdNow(){
-              console.log("function running");
-                
-                for (i = 0; i < 10; i++) {
-                if (pbjs) {
-                  try {
-                    pbjs.renderAd(document, '%%PATTERN:hb_adid%%');
-                    console.log("render ad");
-                    break;
-                  } catch (e) {
-                    continue;
-                  }
-                }
-                }
-            }
-
-
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1'); });
             </script>
           </div>
+
     </body>
 </html>
