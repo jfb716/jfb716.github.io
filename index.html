@@ -30,7 +30,7 @@
 
           var adUnits = [{
               code: 'div-gpt-ad-1',
-              sizes: [[728, 90]],
+              sizes: [[300, 250]],
               bids: [{
                   bidder: 'audienceNetwork',
                   params: {
@@ -92,6 +92,7 @@
                                   });});};
 
                           setTimeout(function() {
+                            adUnits.sizes = [[728, 90]];
                               sendAdserverRequest();
                           }, PREBID_TIMEOUT);
 
