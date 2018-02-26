@@ -10,7 +10,7 @@
 
           var adUnits = [{
               code: 'div-gpt-ad-1',
-              sizes: [[728, 90]],
+              sizes: [[300, 250]],
               bids: [{
                   bidder: 'audienceNetwork',
                   params: {
@@ -32,7 +32,7 @@
               console.log("AdUnits Added");
               pbjs.requestBids({
                   adUnitCodes: ['div-gpt-ad-1'],
-                
+                  console.log("Bids Requested")
               });
           });
 
