@@ -27,13 +27,12 @@
 
         <script type="text/javascript" src="prebid.js" async></script>
         <script>
-
-
           pbjs.que.push(function() {
               pbjs.addAdUnits(adUnits);
+              console.log("AdUnits Added");
               pbjs.requestBids({
                   adUnitCodes: ['div-gpt-ad-1'],
-                  bidsBackHandler: renderAdNow()
+                
               });
           });
 
