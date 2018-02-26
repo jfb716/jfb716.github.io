@@ -7,7 +7,6 @@
         <title>Test Site</title>
         <meta property="fb:pages" content="311928532310740" />
         <script>
-          var PREBID_TIMEOUT = 2000;
 
           var adUnits = [{
               code: 'div-gpt-ad-1',
@@ -30,41 +29,13 @@
         <script>
 
 
-          pbjs.bidderSettings = {
-                    standard: {
-                        adserverTargeting: [
-                            {
-                                key: "hb_bidder",
-                                val: function (bidResponse) {
-                                    console.log('Bid Response Bidder Name: ' + bidResponse.bidderCode);
-                                    return bidResponse.bidderCode;
-                                }
-                            }, {
-                                key: "hb_adid",
-                                val: function (bidResponse) {
-                                    console.log('Bid Response Ad ID: ' + bidResponse.adId);
-                                    return bidResponse.adId;
-                                }
-                            }, {
-                                key: "hb_pb",
-                                val: function (bidResponse) {
-                                    console.log('Bid Response Bid Price: ' + bidResponse.pbMg);
-                                    return '20.00';
-                                }
-                            }]}};
-
           pbjs.que.push(function() {
               pbjs.addAdUnits(adUnits);
               pbjs.requestBids({
                   adUnitCodes: ['div-gpt-ad-1'],
-                  bidsBackHandler: renderAdNow
+                  bidsBackHandler: renderAdNow()
               });
           });
-
-
-          setTimeout(function() {
-              renderAdNow();
-          }, PREBID_TIMEOUT);
 
         </script>
 
