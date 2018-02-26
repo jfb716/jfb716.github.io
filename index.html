@@ -52,6 +52,7 @@
                   adUnitCodes: ['div-gpt-ad-1'],
 
               });
+
           });
 
         </script>
@@ -63,7 +64,7 @@
 
           <div class="box1" style="height: 90px;width: 728px;border: 1px solid black;box-sizing: border-box;">
             <script>
-
+            renderAdNow(function() {
                 var w = window;
                 for (i = 0; i < 10; i++) {
                 w = w.parent;
@@ -76,6 +77,7 @@
                   }
                 }
                 }
+            }, 2000);
             </script>
           </div>
     </body>
