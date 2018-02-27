@@ -81,6 +81,7 @@ const isTestmode = () => Boolean(
  * @param {String} placementId
  * @param {String} format
  * @param {String} bidId
+ * @param {String} size
  * @returns {String} HTML
  */
 
