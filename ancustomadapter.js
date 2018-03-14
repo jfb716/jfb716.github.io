@@ -37,7 +37,7 @@ const isBidRequestValid = bid =>
  */
 const flattenSize = size =>
   (Array.isArray(size) && size.length === 2) ? `${size[0]}x${size[1]}` : size;
-
+  console.log(`SIZE: ${size}`);
 /**
  * Expands a 'WxH' string as a 2-element [W, H] array
  * @param {String} size
