@@ -3361,7 +3361,7 @@ pbjsChunk([81], {
                         g = Number(i.config.getConfig().bidderTimeout),
                         n = t.bids,
                         r = void 0 === n ? {} : n;
-                        console.log(e.sizes);
+                        console.log(`TEST: ${e.sizes}`);
                     return Object.keys(r).map((function(a) {
                         return r[a]
                     })).reduce((function(a, e) {
