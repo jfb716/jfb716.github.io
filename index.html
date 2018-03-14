@@ -70,7 +70,7 @@
                           pbjs.que.push(function() {
                               pbjs.addAdUnits(adUnits);
                               pbjs.requestBids({
-                                  adUnitCodes: ['div-gpt-ad-1'],
+                                  adUnitCodes: ['div-gpt-ad-1', 'div-gpt-ad-2'],
                                   bidsBackHandler: sendAdserverRequest
                               });
                           });
@@ -81,7 +81,7 @@
                               googletag.cmd.push(function() {
                                   pbjs.que.push(function() {
                                       pbjs.setTargetingForGPTAsync();
-                                      googletag.pubads().refresh([slot1]);
+                                      googletag.pubads().refresh([slot1, slot2]);
                                   });});};
 
                           setTimeout(function() {
