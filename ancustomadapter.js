@@ -106,7 +106,6 @@ const isTestmode = () => Boolean(
  * @param {String} bidId
  * @returns {String} HTML
  */
-console.log(`SIZE: ${size}`);
 const createAdHtml = (placementId, format, bidId) => {
   const nativeStyle = format === 'native' ? '<style>.thirdPartySubtitleClass,.thirdPartyTitleClass{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical}.thirdPartyRoot{box-sizing:border-box;background-color:#fff;color:#000;font-family:garamond;font-size:14px;line-height:16px;width:728px;height:90px;text-align:left;position:relative;border:ridge;padding:10px}.fbAdIcon{height:60px;width:60px;float:left;margin-right:5px}.fbAdChoice{margin-right:50px}.thirdPartySubtitleClass{font-size:20px;-webkit-line-clamp:1;height:16px;margin-bottom:10px}.thirdPartyTitleClass{padding-right:12px;line-height:18px;font-size:18px;-webkit-line-clamp:2;height:36px}.thirdPartyCallToActionClass{background-color:#000;color:#fff;border-radius:4px;padding:6px 20px;text-align:center;text-transform:uppercase;font-size:11px;position:absolute;bottom:10px;right:10px}</style>' : '';
   const nativeContainer = format === 'native' ? '<div class="thirdPartyRoot"> <a class="fbAdLink"><div class="fbAdIcon"></div><div class="fbAdSubtitle thirdPartySubtitleClass"></div><div class="fbAdTitle thirdPartyTitleClass"></div><div class="fbAdCallToAction thirdPartyCallToActionClass"></div> </a></div>' : '';
